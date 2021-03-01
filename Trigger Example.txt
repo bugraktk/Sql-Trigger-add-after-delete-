@@ -1,0 +1,9 @@
+create trigger writer_del on Yazar after delete as begin
+
+declare @yazarno int,@yazarad varchar(20),@yazarsoyad varchar(20)
+
+select @yazarno=yazarno,@yazarad=yazarad,@yazarsoyad=yazarsoyad from deleted
+
+insert into Yazars values(@yazarno,@yazarad,@yazarsoyad)
+
+end
